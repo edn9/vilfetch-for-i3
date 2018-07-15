@@ -3,7 +3,7 @@ clear &&
 
 #put your info here
 os="$(grep -oP "(?<=^NAME=\")[A-Za-z]+" /etc/os-release)"
-kernel="$(dmesg | grep 'Linux version'| cut -d' ' -f8)"
+kernel="$(dmesg | grep 'Linux version'| cut -d' ' -f8 | cut -d'-' -f1,2)"
 packages="$(pacman -Qq | wc -l)"
 shell="$(printf ${SHELL##*/})"
 wm="$(printf ${DESKTOP_STARTUP_ID} | cut -d/ -f1)"
